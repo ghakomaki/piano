@@ -8,12 +8,12 @@ import MainContent from '@/components/MainContent';
 import Latest from '@/components/Latest';
 import Footer from '@/components/Footer';
 
-import getBlogTheme from '@/theme/getBlogTheme';
+// import getBlogTheme from '@/theme/getBlogTheme';
 
 export default function Blog() {
   const [mode, setMode] = React.useState<PaletteMode>('light');
-  const [showCustomTheme, setShowCustomTheme] = React.useState(true);
-  const blogTheme = createTheme(getBlogTheme(mode));
+  // const [showCustomTheme, setShowCustomTheme] = React.useState(true);
+  // const blogTheme = createTheme(getBlogTheme(mode));
   const defaultTheme = createTheme({ palette: { mode } });
   // This code only runs on the client side, to determine the system color preference
   React.useEffect(() => {
@@ -30,15 +30,15 @@ export default function Blog() {
     }
   }, []);
 
-  const toggleColorMode = () => {
-    const newMode = mode === 'dark' ? 'light' : 'dark';
-    setMode(newMode);
-    localStorage.setItem('themeMode', newMode); // Save the selected mode to localStorage
-  };
+  // const toggleColorMode = () => {
+  //   const newMode = mode === 'dark' ? 'light' : 'dark';
+  //   setMode(newMode);
+  //   localStorage.setItem('themeMode', newMode); // Save the selected mode to localStorage
+  // };
 
-  const toggleCustomTheme = () => {
-    setShowCustomTheme((prev) => !prev);
-  };
+  // const toggleCustomTheme = () => {
+  //   setShowCustomTheme((prev) => !prev);
+  // };
 
   return (
       <ThemeProvider theme={defaultTheme}>
