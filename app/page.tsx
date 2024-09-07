@@ -1,5 +1,5 @@
 "use client"
-import { useState } from 'react'
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Menu, Mail, PlayCircle, X } from "lucide-react"
@@ -24,7 +24,7 @@ export default function MusicianHomepage() {
       <div
         className="fixed inset-0 z-0"
         style={{
-          backgroundImage: "url('./images/homepage-background.jpg')",
+          backgroundImage: "url('./images/homepagebackground.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
