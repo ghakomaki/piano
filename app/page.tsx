@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Menu, Music, Calendar, Mail, PlayCircle, X } from "lucide-react"
+import { Menu, Mail, PlayCircle, X } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
