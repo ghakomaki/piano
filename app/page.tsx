@@ -137,7 +137,7 @@ export default function MusicianHomepage() {
         </section>
 
         {/* Music Section */}
-        <section id="music" className="mb-16">
+        <section id="music" className="mb-16 px-10">
           <h2 className="text-3xl font-bold mb-4">Latest Releases</h2>
           {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"> */}
           <Carousel setApi={setApi} className="w-full" >
