@@ -107,7 +107,7 @@ export default function MusicianHomepage() {
       </header>
 
       {/* Main Content */}
-      <main className="relative z-10 flex-grow container mx-auto px-4 py-8">
+      <main className="relative z-10 flex-grow container mx-auto px-8 py-8">
         {/* Hero Section */}
         <section className="text-center mb-16">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">Welcome to My World of Music</h1>
@@ -137,9 +137,8 @@ export default function MusicianHomepage() {
         </section>
 
         {/* Music Section */}
-        <section id="music" className="mb-16 px-10">
-          <h2 className="text-3xl font-bold mb-4">Latest Releases</h2>
-          {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"> */}
+        <section id="music" className="mb-16 px-6">
+          <h2 className="text-3xl font-bold mb-4 -mx-6">Latest Releases</h2>
           <Carousel setApi={setApi} className="w-full" >
             <CarouselContent className="-ml-2 md:-ml-4">
               {videoItems.map((video) => (
