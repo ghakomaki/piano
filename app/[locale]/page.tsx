@@ -8,6 +8,7 @@ import { useTranslations } from "next-intl";
 import { Card, CardContent } from "@/components/ui/card";
 import Header from "@/components/ui/header";
 import { Locale } from "@/i18n/routing";
+import { unstable_setRequestLocale } from 'next-intl/server';
 
 const videoItems = [
   {
@@ -96,6 +97,7 @@ const videoItems = [
 ];
 export default function MusicianHomepage({ params: { locale } }: { params: { locale: Locale; }; }) {
   const t = useTranslations("Home");
+  unstable_setRequestLocale(locale);
 
   return (
     <div className="min-h-screen flex flex-col bg-black text-white overflow-hidden">
