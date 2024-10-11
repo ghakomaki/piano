@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { NextIntlClientProvider } from 'next-intl';
 import "./globals.css";
-import { getLocale, getMessages } from "next-intl/server";
+import { getLocale, getMessages, unstable_setRequestLocale } from "next-intl/server";
+import { Locale } from "@/i18n/routing";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -21,11 +22,13 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({
-  children
+  children,
+  params: { locale }
 }: Readonly<{
   children: React.ReactNode;
+  params: { locale: Locale; };
 }>) {
-  const locale = await getLocale();
+  unstable_setRequestLocale(locale);
   const messages = await getMessages();
   return (
     <html lang={locale}>
