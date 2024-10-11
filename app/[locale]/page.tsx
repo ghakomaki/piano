@@ -1,43 +1,101 @@
-"use client";
-import { useState } from "react";
+/* eslint-disable react/jsx-key */
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Menu, Mail, PlayCircle, X } from "lucide-react";
-import Link from "next/link";
+import { Mail } from "lucide-react";
 import Image from "next/image";
-import { Carousel, CarouselApi, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import React from "react";
+import { useTranslations } from "next-intl";
 import { Card, CardContent } from "@/components/ui/card";
+import Header from "@/components/ui/header";
+import { Locale } from "@/i18n/routing";
 
 const videoItems = [
-  { src: "https://www.youtube-nocookie.com/embed/O2_QSEqjvgA", title: "Love You Online", spotifyLink: "https://open.spotify.com/track/5jgOquEiSmryWQhctz3jFZ?si=e38ffba3212346f9" },
-  { src: "https://www.youtube-nocookie.com/embed/tryQDfdF0PI", title: "You are my Mixolydian ميكسوليديان", spotifyLink: "https://open.spotify.com/track/5CwSDoozVYq5DCuPrcZbjq?si=4a5f119f183e4fbb" },
-  { src: "https://www.youtube-nocookie.com/embed/zscgUPvdjno", title: "Goodbye Butterfly", spotifyLink: "https://open.spotify.com/track/45XRBdx5xDm5XAZGFwNyyZ?si=b612c76ac1784e14" }
-];
-export default function MusicianHomepage() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [api, setApi] = React.useState<CarouselApi>();
-  const [current, setCurrent] = React.useState(0);
-
-  React.useEffect(() => {
-    if (!api) {
-      return;
+  {
+    id: 1,
+    src: "https://www.youtube-nocookie.com/embed/O2_QSEqjvgA",
+    title: "Love You Online",
+    spotifyLink: "https://open.spotify.com/track/5jgOquEiSmryWQhctz3jFZ?si=e38ffba3212346f9",
+  },
+  {
+    id: 2,
+    src: "https://www.youtube-nocookie.com/embed/tryQDfdF0PI",
+    title: "You are my Mixolydian ميكسوليديان",
+    spotifyLink: "https://open.spotify.com/track/5CwSDoozVYq5DCuPrcZbjq?si=4a5f119f183e4fbb",
+  },
+  {
+    id: 3,
+    src: "https://www.youtube-nocookie.com/embed/zscgUPvdjno",
+    title: "Goodbye Butterfly",
+    spotifyLink: "https://open.spotify.com/track/45XRBdx5xDm5XAZGFwNyyZ?si=b612c76ac1784e14",
+    description: {
+      en: [
+        "I will be your footsteps on the ground.",
+        <br />,
+        "One two three",
+        <br />,
+        "One two three",
+        <br />,
+        "And you will appear from afar, like you did twenty years ago in my dream. It was goodbye.  ",
+        <br />,
+        "One two three",
+        <br />,
+        "You, the oriental butterfly, a pure soul, came to say goodbye again for I -at first- did not understand.",
+        "I will take my time to immortalize this moment.",
+        <br />,
+        "One two three…",
+        <br />,
+        "You twirl around with your lilac wings, and I -in a green dress- pound the ground of our old roof and the wind is white. You float around and I watch you for the last time. Memorizing the details of your spirit, the lightness, the joy, the gentleness, the hidden agony and at last, the decision to leave, and I pound the ground. ",
+        <br />,
+        "One two three…",
+        <br />,
+        "And at the end you leave and I stay alone on top of the old house, and I never see you again. Only this time I can dance with you whenever I like, I will close my eyes, play, and stomp the ground.",
+        <br />,
+        "One two three…"
+      ],
+      de: ["Ich werde deine Fußstapfen auf dem Boden sein.",
+        <br />,
+        "Eins zwei drei",
+        <br />,
+        "Eins zwei drei",
+        "Und du wirst aus der Ferne erscheinen, wie vor zwanzig Jahren in meinem Traum. Es war ein Abschied.",
+        <br />,
+        "Eins zwei drei",
+        <br />,
+        "Du, der orientalische Schmetterling, eine reine Seele, bist gekommen, um dich wieder zu verabschieden, denn ich habe es zunächst nicht verstanden.",
+        "Ich werde mir Zeit nehmen, um diesen Moment zu verewigen.",
+        <br />,
+        "Eins, zwei, drei...",
+        <br />,
+        "Du wirbelst mit deinen fliederfarbenen Flügeln herum, und ich - in einem grünen Kleid - stampfe auf den Boden unseres alten Daches, und der Wind ist weiß. Du schwebst umher und ich beobachte dich zum letzten Mal. Ich merke mir die Details deines Geistes, die Leichtigkeit, die Freude, die Sanftheit, die verborgenen Qualen und schließlich die Entscheidung zu gehen, und ich stampfe auf den Boden.",
+        "Eins, zwei, drei...",
+        "Und am Ende gehst du, und ich bleibe allein auf dem Dach des alten Hauses, und ich sehe dich nie wieder. Nur dieses Mal kann ich mit dir tanzen, wann immer ich will, ich schließe meine Augen, spiele und stampfe auf den Boden.",
+        "Eins zwei drei...",
+      ],
+      ar: ["سأكون خطاك على الأرض.",
+        <br />,
+        "واحد اثنان ثلاثة",
+        <br />,
+        "واحد اثنان ثلاثة",
+        <br />,
+        "وستظهرين من بعيد كما فعلتِ قبل عشرين عاماً في حلمي لقد كان وداعاً  ",
+        "واحد اثنان ثلاثة",
+        <br />,
+        "أنتِ، أيتها الفراشة الشرقية، أيتها الروح الطاهرة، جئتِ لتقولي لي وداعاً مرة أخرى لأني -في البداية- لم أفهم.",
+        "سآخذ وقتي لتخليد هذه اللحظة.",
+        "واحد اثنان ثلاثة...",
+        <br />,
+        "تَدُورِينَ أَنْتِ بِجَنَاحَيْكِ الأُرْجُوَانِيَّيْنِ، وَأَنَا - بِثَوْبٍ أَخْضَرَ - أَطْرُقُ أَرْضَ سَقْفِنَا الْقَدِيمِ وَالرِّيحُ بَيْضَاءُ. تطفين حولي وأنا أراقبك للمرة الأخيرة. أحفظ تفاصيل روحك، الخفة، الفرح، البهجة، اللطف، العذاب الخفي، وأخيراً قرار الرحيل، وأنا أدق الأرض. ",
+        "واحد اثنان ثلاثة...",
+        <br />,
+        "وفي النهاية تغادرين أنتِ وأنا أبقى وحدي فوق البيت القديم، ولا أراكِ مرة أخرى. فقط هذه المرة يمكنني أن أرقص معك وقتما أشاء، سأغمض عينيّ وألعب وأدق الأرض.",
+        <br />,
+        "واحد اثنان ثلاثة..."
+      ]
     }
-
-    setCurrent(api.selectedScrollSnap() + 1);
-
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap() + 1);
-    });
-  }, [api]);
-
-  const goToSlide = (index: number) => {
-    api?.scrollTo(index);
-  };
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  }
+];
+export default function MusicianHomepage({ params: { locale } }: { params: { locale: Locale; }; }) {
+  const t = useTranslations("Home");
 
   return (
     <div className="min-h-screen flex flex-col bg-black text-white overflow-hidden">
@@ -45,7 +103,7 @@ export default function MusicianHomepage() {
       <div
         className="fixed inset-0 z-0"
         style={{
-          backgroundImage: "url('./images/homepagebackground.jpg')",
+          backgroundImage: "url('/images/homepagebackground.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -57,54 +115,7 @@ export default function MusicianHomepage() {
       />
 
       {/* App Bar */}
-      <header className="relative z-20 bg-black bg-opacity-50 backdrop-blur-md">
-        <div className="container mx-auto px-3 py-3 flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold">
-            <Image src="/images/logo.png" alt="Logo" width={100} height={100} />
-          </Link>
-          <nav className="hidden md:flex space-x-4">
-            <Link href="#biography" className="hover:text-primary-400 transition-colors">
-              Biography
-            </Link>
-            <Link href="#music" className="hover:text-primary-400 transition-colors">
-              Music
-            </Link>
-            <Link href="#About" className="hover:text-primary-400 transition-colors">
-              About
-            </Link>
-            <Link href="#contact" className="hover:text-primary-400 transition-colors">
-              Contact
-            </Link>
-          </nav>
-          <Button variant="ghost" size="icon" className="md:hidden" onClick={toggleMenu}>
-            {isMenuOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
-            <span className="sr-only">Toggle menu</span>
-          </Button>
-        </div>
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-black bg-opacity-90 backdrop-blur-md py-3">
-            <nav className="flex flex-col items-center space-y-4">
-              <Link href="#about" className="hover:text-primary-400 transition-colors" onClick={toggleMenu}>
-                About
-              </Link>
-              <Link href="#music" className="hover:text-primary-400 transition-colors" onClick={toggleMenu}>
-                Music
-              </Link>
-              <Link href="#tour" className="hover:text-primary-400 transition-colors" onClick={toggleMenu}>
-                Tour
-              </Link>
-              <Link href="#contact" className="hover:text-primary-400 transition-colors" onClick={toggleMenu}>
-                Contact
-              </Link>
-            </nav>
-          </div>
-        )}
-      </header>
+      <Header />
 
       {/* Main Content */}
       <main className="relative z-10 flex-grow container mx-auto px-8 py-8">
@@ -137,53 +148,31 @@ export default function MusicianHomepage() {
         </section>
 
         {/* Music Section */}
-        <section id="music" className="mb-16 px-6">
-          <h2 className="text-3xl font-bold mb-4 -mx-6">Latest Releases</h2>
-          <Carousel setApi={setApi} className="w-full" >
-            <CarouselContent className="-ml-2 md:-ml-4">
-              {videoItems.map((video) => (
-                <CarouselItem key={video.title} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                  <Card className="overflow-hidden border-black/50">
-                    <CardContent className="p-0 relative group bg-gray-800">
-                      {/* <div key={video.title} className="bg-gray-800 rounded-lg overflow-hidden shadow-lg"> */}
-                      <iframe
-                        src={video.src}
-                        title={video.title}
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerPolicy="strict-origin-when-cross-origin" allowFullScreen>
-                      </iframe>
-                      <div className="p-4">
-                        <h3 className="text-xl font-semibold mb-2 text-white/50">{video.title}</h3>
-                        <a target="_blank" href={video.spotifyLink} rel="noopener noreferrer">
-                          <Button variant="outline" className="w-full text-white/50">
-                            <PlayCircle className="mr-2 h-4 w-4" />
-                            Listen on Spotify
-                          </Button>
-                        </a>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="md:flex" />
-            <CarouselNext className="md:flex" />
-          </Carousel>
-          <div className="md:hidden inline left-0 right-0 flex justify-center items-center gap-2">
-            <div className="md:hidden gap-3">
-              {videoItems.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 mx-1 ${current === index + 1 ? 'bg-white/60 w-4' : 'bg-white/30'
-                    }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
-            </div>
-
-          </div>
+        <section id="music" className="mb-16">
+          <h2 className="text-3xl font-bold mb-4">Latest Releases</h2>
+          {/* <Carousel setApi={setApi} className="w-full" >
+            <CarouselContent className="-ml-2 md:-ml-4"> */}
+          {videoItems.map((video) => (
+            <Card key={video.id} className="overflow-hidden mb-8" dir={locale === "ar" ? "rtl" : "ltr"}>
+              <CardContent className="p-0">
+                <div className="md:flex">
+                </div>
+                <div className={`p-6 ${locale === "ar" ? "rtl" : "ltr"}`}>
+                  <h2 className="text-2xl font-bold mb-2">{video.title}</h2>
+                  {/* <p className="text-lg text-muted-foreground mb-4">{video.artist}</p> */}
+                  {/* <p className={`text-sm ${expandedId === video.id ? '' : 'line-clamp-3'}`}> */}
+                  <iframe
+                    src={video.src}
+                    title={video.title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin" allowFullScreen>
+                  </iframe>
+                  <div className="mt-4 flex justify-between items-center ">{t.raw(video.id.toString())}</div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </section>
 
         <section id="tour" className="mb-16">
@@ -230,6 +219,6 @@ export default function MusicianHomepage() {
           <p>&copy; 2024 Rada Hanana. All rights reserved.</p>
         </div>
       </footer>
-    </div>
+    </div >
   );
 }

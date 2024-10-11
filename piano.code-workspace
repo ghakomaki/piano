@@ -2,6 +2,12 @@
     "folders": [
         {
             "path": "."
+        },
+        {
+            "path": "../RTVC"
+        },
+        {
+            "path": "../cws"
         }
     ],
     "settings": {
