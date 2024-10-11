@@ -18,4 +18,8 @@ export const localeNames: Record<Locale, string> = {
     "ar": "العربية",
 };
 
+export function generateStaticParams() {
+    return routing.locales.map((locale) => ({ locale }));
+}
+
 export const { Link, getPathname, redirect, usePathname, useRouter } = createLocalizedPathnamesNavigation(routing);
