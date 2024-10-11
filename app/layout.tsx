@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { NextIntlClientProvider } from 'next-intl';
 import "./globals.css";
-import { getLocale, getMessages, unstable_setRequestLocale } from "next-intl/server";
+import { getMessages, unstable_setRequestLocale } from "next-intl/server";
 import { Locale } from "@/i18n/routing";
 
 const geistSans = localFont({
