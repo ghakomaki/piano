@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import { NextIntlClientProvider } from 'next-intl';
 import "./globals.css";
 import { getMessages, unstable_setRequestLocale } from "next-intl/server";
-import { Locale } from "@/i18n/routing";
+import { Locale, routing } from "@/i18n/routing";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -20,6 +20,10 @@ export const metadata: Metadata = {
   title: "Rada Hanana",
   description: "Rada Hanana",
 };
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
 export default async function RootLayout({
   children,
