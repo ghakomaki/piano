@@ -12,6 +12,6 @@ export const config = {
         // - … the ones containing a dot (e.g. `favicon.ico`)
         '/(de|en|ar)/:path*',
 
-        '/((?!_next|_vercel|.*\\..*).*)'
+        '/((?!api|_next/static|_next/image|favicon.ico|apple-touch-icon.png|favicon.svg|images/books|icons|manifest).*)'
     ],
 };

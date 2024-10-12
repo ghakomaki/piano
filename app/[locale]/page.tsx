@@ -7,12 +7,8 @@ import React from "react";
 import { useTranslations } from "next-intl";
 import { Card, CardContent } from "@/components/ui/card";
 import Header from "@/components/ui/header";
-import { Locale, routing } from "@/i18n/routing";
+import { Locale } from "@/i18n/routing";
 import { unstable_setRequestLocale } from 'next-intl/server';
-
-export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
-}
 
 const videoItems = [
   {

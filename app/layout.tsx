@@ -25,13 +25,17 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
+type Props = {
+  children: React.ReactNode;
+  params: {
+    locale: Locale;
+  };
+};
+
 export default async function RootLayout({
   children,
   params: { locale }
-}: Readonly<{
-  children: React.ReactNode;
-  params: { locale: Locale; };
-}>) {
+}: Props) {
   unstable_setRequestLocale(locale);
   const messages = await getMessages();
   return (

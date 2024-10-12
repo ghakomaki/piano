@@ -7,7 +7,7 @@ export default function NotFoundPage() {
 
     return (
         <PageLayout title={"NotFound"}>
-            <p className="max-w-[460px]">{ }</p>
+            <p className="max-w-[460px]">{"tests"}</p>
         </PageLayout>
     );
 }
