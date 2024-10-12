@@ -1,16 +1,19 @@
+"use client";
+
 import Link from "next/link";
 import LocaleSwitcher from "./localeSwitcher";
 import { Button } from "./button";
 import { X, Menu } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Header() {
-    // const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 
-    // const toggleMenu = () => {
-    //     setIsMenuOpen(!isMenuOpen);
-    // };
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
 
     return (
 
@@ -35,8 +38,8 @@ export default function Header() {
                     </Link>
                     <LocaleSwitcher />
                 </nav>
-                <Button variant="ghost" size="icon" className="md:hidden">
-                    {true ? (
+                <Button variant="ghost" size="icon" className="md:hidden" onClick={toggleMenu}>
+                    {isMenuOpen ? (
                         <X className="h-6 w-6" />
                     ) : (
                         <Menu className="h-6 w-6" />
@@ -45,7 +48,7 @@ export default function Header() {
                 </Button>
             </div>
             {/* Mobile Menu */}
-            {true && (
+            {isMenuOpen && (
                 <div className="md:hidden absolute top-full left-0 right-0 bg-black bg-opacity-90 backdrop-blur-md py-3">
                     <nav className="flex flex-col items-center space-y-4">
                         <Link href="#about" className="hover:text-primary-400 transition-colors" >

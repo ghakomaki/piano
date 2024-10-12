@@ -6,7 +6,8 @@ export const routing = defineRouting({
     defaultLocale: 'de',
     pathnames: {
         '/': '/',
-    }
+    },
+    localePrefix: 'always',
 });
 
 export type Pathnames = keyof typeof routing.pathnames;

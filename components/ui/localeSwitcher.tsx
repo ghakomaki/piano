@@ -3,7 +3,6 @@ import { routing, Locale, localeNames } from '@/i18n/routing';
 import { SelectItem } from './select';
 import React from 'react';
 import LocaleSwitcherSelect from './localeSwitcherSelect';
-
 export default function LocaleSwitcher() {
     const locale = useLocale();
 
