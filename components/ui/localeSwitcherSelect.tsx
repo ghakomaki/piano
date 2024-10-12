@@ -1,12 +1,12 @@
 "use client";
 
-import { useRouter } from '@/i18n/routing';
-import { Select, SelectTrigger, SelectValue, SelectContent } from './select';
+import { Locale, useRouter } from '@/i18n/routing';
+import { Select, SelectTrigger, SelectContent, SelectValue } from './select';
 import { ReactNode, useTransition } from 'react';
 
 type Props = {
     children: ReactNode;
-    defaultValue: string;
+    defaultValue: Locale;
 };
 
 export default function LocaleSwitcherSelect({ children, defaultValue }: Props) {
@@ -19,7 +19,7 @@ export default function LocaleSwitcherSelect({ children, defaultValue }: Props) 
     };
     return (
         <Select defaultValue={defaultValue} onValueChange={handleLocaleChange} disabled={isPending} >
-            <SelectTrigger className="w-auto" >
+            <SelectTrigger className="w-[100px]" >
                 <SelectValue />
             </SelectTrigger>
             <SelectContent  >
