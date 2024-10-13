@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-// import LocaleSwitcher from "./localeSwitcher";
 import { Button } from "./button";
 import { X, Menu } from "lucide-react";
 import Image from "next/image";
