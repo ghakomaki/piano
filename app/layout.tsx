@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import "./globals.css";
 import { getMessages, unstable_setRequestLocale } from "next-intl/server";
 import { Locale, routing } from "@/i18n/routing";
+import LocaleSwitcher from "@/components/ui/localeSwitcher";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",

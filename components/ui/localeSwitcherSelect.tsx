@@ -1,17 +1,16 @@
 "use client";
 
-import { Locale, useRouter } from '@/i18n/routing';
+import { useRouter } from '@/i18n/routing';
 import { Select, SelectTrigger, SelectContent, SelectValue } from './select';
 import { ReactNode, useTransition } from 'react';
 
 type Props = {
     children: ReactNode;
-    defaultValue: Locale;
+    defaultValue: string;
 };
 
 export default function LocaleSwitcherSelect({ children, defaultValue }: Props) {
     const router = useRouter();
-    // const pathname = usePathname();
     const [isPending, startTransition] = useTransition();
 
     function handleLocaleChange(newLocale: string): void {
@@ -22,7 +21,7 @@ export default function LocaleSwitcherSelect({ children, defaultValue }: Props) 
             <SelectTrigger className="w-[100px]" >
                 <SelectValue />
             </SelectTrigger>
-            <SelectContent  >
+            <SelectContent>
                 {children}
             </SelectContent>
         </Select>

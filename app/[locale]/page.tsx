@@ -9,6 +9,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Header from "@/components/ui/header";
 import { Locale } from "@/i18n/routing";
 import { unstable_setRequestLocale } from 'next-intl/server';
+import LocaleSwitcher from "@/components/ui/localeSwitcher";
 
 const videoItems = [
   {
@@ -52,14 +53,15 @@ export default function MusicianHomepage({ params: { locale } }: { params: { loc
       />
 
       {/* App Bar */}
-      <Header />
-
+      <Header>
+        <LocaleSwitcher />
+      </Header>
       {/* Main Content */}
       <main className="relative z-10 flex-grow container mx-auto px-8 py-8">
         {/* Hero Section */}
         <section className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">Welcome to My World of Music</h1>
-          <p className="text-xl md:text-2xl mb-8">Play Me A Story</p>
+          {/* <h1 className="text-4xl md:text-6xl font-bold mb-4">Welcome to My World of Music</h1>
+          <p className="text-xl md:text-2xl mb-8">Play Me A Story</p> */}
         </section>
 
         {/* About Section */}
@@ -67,8 +69,8 @@ export default function MusicianHomepage({ params: { locale } }: { params: { loc
           <h2 className="text-3xl font-bold mb-4">Biography</h2>
           <div className="flex flex-col md:flex-row gap-8">
             <div className="md:w-1/2">
-              <p className="mb-4">
-                &quot;Throughout her studies and career, Rada was known for having a very unique sound and brilliant technique, which seemed effortless and brought  joy and comfort to the listener. Performing solo concerts in the Near East, America and Europe as well as chamber music and with orchestra, Rada was then featured in the musical documentary Hear Us, winner of the silver medal in New York TV Festival 2019, in which she was invited to perform the premiere of trio concerto by Brad Harris, alongside her costars Clarissa Bevilacqua and Daniel Kaler at Carnegie Hall, New York. The film is available on Amazon Prime and Apple TV world wide since 2023.&quot;
+              <p className="mb-4" dir={locale === "ar" ? "rtl" : "ltr"}>
+                &quot;{t("biography")}&quot;
               </p>
             </div>
             <div className="md:w-1/2">
@@ -87,15 +89,13 @@ export default function MusicianHomepage({ params: { locale } }: { params: { loc
         {/* Music Section */}
         <section id="music" className="mb-16">
           <h2 className="text-3xl font-bold mb-4">Latest Releases</h2>
-          {/* <Carousel setApi={setApi} className="w-full" >
-            <CarouselContent className="-ml-2 md:-ml-4"> */}
           {videoItems.map((video) => (
-            <Card key={video.id} className="overflow-hidden mb-8" dir={locale === "ar" ? "rtl" : "ltr"}>
+            <Card key={video.id} className="border-0 overflow-hidden mb-8 flex flex-col md:flex-row justify-between items-center bg-gray-800 p-4 rounded-lg" dir={locale === "ar" ? "rtl" : "ltr"}>
               <CardContent className="p-0">
                 <div className="md:flex">
                 </div>
                 <div className={`p-6 ${locale === "ar" ? "rtl" : "ltr"}`}>
-                  <h2 className="text-2xl font-bold mb-2">{video.title}</h2>
+                  <h2 className="text-gray-400 text-2xl font-bold mb-2">{video.title}</h2>
                   {/* <p className="text-lg text-muted-foreground mb-4">{video.artist}</p> */}
                   {/* <p className={`text-sm ${expandedId === video.id ? '' : 'line-clamp-3'}`}> */}
                   <iframe
@@ -105,7 +105,7 @@ export default function MusicianHomepage({ params: { locale } }: { params: { loc
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerPolicy="strict-origin-when-cross-origin" allowFullScreen>
                   </iframe>
-                  <div className="mt-4 flex justify-between items-center ">{t.raw(video.id.toString())}</div>
+                  <div className="text-gray-400 mt-4 flex justify-between items-center ">{t.raw(video.id.toString())}</div>
                 </div>
               </CardContent>
             </Card>

@@ -1,13 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import LocaleSwitcher from "./localeSwitcher";
+// import LocaleSwitcher from "./localeSwitcher";
 import { Button } from "./button";
 import { X, Menu } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 
-export default function Header() {
+type Props = {
+    children: ReactNode;
+};
+
+export default function Header({ children }: Props) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -29,13 +33,10 @@ export default function Header() {
                     <Link href="#music" className="hover:text-primary-400 transition-colors">
                         Music
                     </Link>
-                    <Link href="#about" className="hover:text-primary-400 transition-colors">
-                        About
-                    </Link>
                     <Link href="#contact" className="hover:text-primary-400 transition-colors">
                         Contact
                     </Link>
-                    <LocaleSwitcher />
+                    {children}
                 </nav>
                 <Button variant="ghost" size="icon" className="md:hidden" onClick={toggleMenu}>
                     {isMenuOpen ? (
@@ -56,13 +57,10 @@ export default function Header() {
                         <Link href="#music" className="hover:text-primary-400 transition-colors">
                             Music
                         </Link>
-                        <Link href="#tour" className="hover:text-primary-400 transition-colors">
-                            Tour
-                        </Link>
                         <Link href="#contact" className="hover:text-primary-400 transition-colors" >
                             Contact
                         </Link>
-                        <LocaleSwitcher />
+                        {children}
                     </nav>
                 </div>
             )}
