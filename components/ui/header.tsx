@@ -48,7 +48,7 @@ export default function Header({ children }: Props) {
             </div>
             {/* Mobile Menu */}
             {isMenuOpen && (
-                <div className="md:hidden absolute top-full left-0 right-0 bg-black bg-opacity-90 backdrop-blur-md py-3">
+                <div className="md:hidden absolute top-full left-0 right-0 bg-black bg-opacity-90 backdrop-blur-md py-3" onClick={() => setIsMenuOpen(false)}>
                     <nav className="flex flex-col items-center space-y-4">
                         <Link href="#about" className="hover:text-primary-400 transition-colors" >
                             About
